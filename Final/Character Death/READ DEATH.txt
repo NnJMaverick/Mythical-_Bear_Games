@@ -1,0 +1,5 @@
+Run at 6fps on 1's
+
+EXCEPT FRAME (CHARACTER DEATH 0004) which runs for 10 frames
+
+After frame 0004 runs for 10 frames, the "You Lose/Game Over" screen appears.

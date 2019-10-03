@@ -1,0 +1,6 @@
+All frames run at 6fps and are done on 1's (Full shooting to reset loop)
+
+EXCEPT FOR FRAME 0007 - it runs for 5 frames 
+(Copy/paste it or whatever it needs to be 5 frames long)
+
+*Connect the shoulder joint to white circle on Charater Body

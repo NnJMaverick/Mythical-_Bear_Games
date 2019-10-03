@@ -1,0 +1,3 @@
+Run at 6fps in order (not loop)
+
+If it is too long, remove the middle frame (Character Hurt 003)
