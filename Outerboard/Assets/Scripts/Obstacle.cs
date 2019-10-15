@@ -22,11 +22,23 @@ public class Obstacle : MonoBehaviour {
     void Update() {
         Vector3 pos = transform.position;
 
-        if (Mathf.Abs(pos.x) >= xMax) {
-            Destroy(this.gameObject);
+        if (pos.x >= xMax) {                                                            //Keeps the player in the game bounds
+            pos.x = xMax;
+            transform.position = pos;
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(-this.GetComponent<Rigidbody2D>().velocity.x, this.GetComponent<Rigidbody2D>().velocity.y);
+        } else if (pos.x <= -xMax) {
+            pos.x = -xMax;
+            transform.position = pos;
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(-this.GetComponent<Rigidbody2D>().velocity.x, this.GetComponent<Rigidbody2D>().velocity.y);
         }
-        if (Mathf.Abs(pos.y) >= yMax) {
-            Destroy(this.gameObject);
+        if (pos.y >= yMax) {
+            pos.y = yMax;
+            transform.position = pos;
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, -this.GetComponent<Rigidbody2D>().velocity.y);
+        } else if (pos.y <= -yMax) {
+            pos.y = -yMax;
+            transform.position = pos;
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(this.GetComponent<Rigidbody2D>().velocity.x, -this.GetComponent<Rigidbody2D>().velocity.y);
         }
     }
 }

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EventController : MonoBehaviour {
-    public GameObject obstaclePrefab;
+    public GameObject asteroid;
+    public GameObject asteroidThicc;
+    public GameObject junk;
+
     // Start is called before the first frame update
     void Start() {
         Invoke("ObstacleGeneration", 0f);
@@ -15,7 +18,15 @@ public class EventController : MonoBehaviour {
     }
     void ObstacleGeneration() {
         for (int i = 0; i < 50; i++) {
-            GameObject obstacle = Instantiate(obstaclePrefab) as GameObject;
+            GameObject obstacle;
+            float temp = Random.value;
+            if (temp < 0.4f) {
+                obstacle = Instantiate(asteroid) as GameObject;
+            } else if (0.4 < temp && temp < 0.6) {
+                obstacle = Instantiate(asteroidThicc) as GameObject;
+            }else{
+                obstacle = Instantiate(junk) as GameObject;
+            }
             Vector3 obsPos;
             obsPos.x = Random.Range(-200f, 200f);
             obsPos.y = Random.Range(-200f, 200f);

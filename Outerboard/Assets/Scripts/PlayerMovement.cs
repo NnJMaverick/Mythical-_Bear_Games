@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     public Camera cam;
+    public GameObject jeb;
 
 
     Vector2 mousePos;
@@ -15,7 +16,12 @@ public class PlayerMovement : MonoBehaviour
     {
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        rb = this.GetComponent<Rigidbody2D>();
 
+        Vector3 pos = jeb.transform.position;
+        pos.x += 3.18f;
+        pos.y += -0.65f;
+        transform.position = pos;
     }
 
     private void FixedUpdate()

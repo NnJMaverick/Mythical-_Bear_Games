@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour
 
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public Rigidbody2D body;
 
     public float bulletForce = 20f;
     
@@ -32,6 +33,7 @@ public class Shooting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        body.AddForce(firePoint.up * bulletForce * -50);
     }
 
 }
