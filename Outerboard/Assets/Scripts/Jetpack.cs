@@ -10,6 +10,8 @@ public class Jetpack : MonoBehaviour{
     private float fuel = 100f;                                                          //Amount of fuel left
     private float maxFuel = 100f;                                                       //Maximum amount of fuel allowed
     private bool hasFuel = true;                                                        //Does the player have fuel
+    private float xMax = 200;                                                           //Maximum xPosition of the player
+    private float yMax = 200;                                                           //Maximum yPosition of the player
 
     // Start is called before the first frame update
     void Start(){
@@ -23,19 +25,19 @@ public class Jetpack : MonoBehaviour{
         if (hasFuel){                                                                   //Does the player have fuel, if so move the player
             if (Input.GetKey(KeyCode.W)){
                 ySpeed--;
-                fuel -= 50f * Time.deltaTime;
+                fuel -= 100f * Time.deltaTime;
             }
             else if (Input.GetKey(KeyCode.S)){
                 ySpeed++;
-                fuel -= 50f * Time.deltaTime;
+                fuel -= 100f * Time.deltaTime;
             }
             else if (Input.GetKey(KeyCode.A)){
                 xSpeed++;
-                fuel -= 50f * Time.deltaTime;
+                fuel -= 100f * Time.deltaTime;
             }
             else if (Input.GetKey(KeyCode.D)){
                 xSpeed--;
-                fuel -= 50f * Time.deltaTime;
+                fuel -= 100f * Time.deltaTime;
             }
         }
 
@@ -47,8 +49,24 @@ public class Jetpack : MonoBehaviour{
 
         pos.x += xSpeed * Time.deltaTime;
         pos.y += ySpeed * Time.deltaTime;
+        
+        if (pos.x >= xMax) {                                                            //Keeps the player in the game bounds
+            pos.x = xMax;
+            xSpeed = 0;
+        }else if (pos.x <= -xMax) {
+            pos.x = -xMax;
+            xSpeed = 0;
+        }
+        if (pos.y >= yMax) {
+            pos.y = yMax;
+            ySpeed = 0;
+        }else if (pos.y <= -yMax) {
+            pos.y = -yMax;
+            ySpeed = 0;
+        }
+
         transform.position = pos;
-        fuel += 20f * Time.deltaTime;
+        fuel += 50f * Time.deltaTime;
 
         if (fuel >= maxFuel){                                                           //Caps the fuel quantity
             fuel = maxFuel;
