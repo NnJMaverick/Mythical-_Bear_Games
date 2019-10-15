@@ -21,7 +21,11 @@ public class Jetpack : MonoBehaviour{
     // Update is called once per frame
     void Update(){
         Vector3 pos = transform.position;                                               //Position of the player
-        
+        Vector3 up = new Vector3(0, 1, 0);
+        Vector3 down = new Vector3(0, -1, 0);
+        Vector3 left = new Vector3(-1, 0, 0);
+        Vector3 right = new Vector3(1, 0, 0);
+
         if (hasFuel){                                                                   //Does the player have fuel, if so move the player
             if (Input.GetKey(KeyCode.W)){
                 ySpeed--;
